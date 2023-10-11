@@ -1,17 +1,17 @@
 body{
-    background-color: hsla(0, 0%, 36%, 0.829);
+    background-color: hsla(0, 0%, 87%, 0.932);
     align-items: center;
 }
 
 h1{
-    color: white;
+    color: rgb(14, 14, 14);
     text-align: center;
     font-family: 'Roboto Slab', serif;
     font-size: 60px;
 }
 
 p{
-    color: white;
+    color: rgb(15, 15, 15);
     font-size: 20px;
     font-family: 'Roboto Slab', serif;
 }
