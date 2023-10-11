@@ -4,6 +4,8 @@ import 'package:menumaster/menudia.dart';
 import 'package:menumaster/pantallamesas.dart';
 import 'package:menumaster/perfilmesero.dart';
 import 'package:menumaster/registro.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
 
 class PrincipalRestauranteWidget extends StatelessWidget {
   const PrincipalRestauranteWidget({Key? key}) : super(key: key);
@@ -123,5 +125,58 @@ class MyApp extends StatelessWidget {
           '/perfilmesero': (context) => const PerfilmeseroWidget(),
           '/registro': (context) => const RegistroWidget(),
         });
+  }
+}
+
+class DatabaseHelper {
+  static Database? _database;
+  static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
+
+  DatabaseHelper._privateConstructor();
+
+  Future<Database> get database async {
+    if (_database != null) return _database!;
+    _database = await _initDatabase();
+    return _database!;
+  }
+
+  Future<Database> _initDatabase() async {
+    final path = join(await getDatabasesPath(), 'menu_master.db');
+    return await openDatabase(
+      path,
+      version: 1,
+      onCreate: _createDatabase,
+    );
+  }
+
+  Future<void> _createDatabase(Database db, int version) async {
+    await db.execute('''
+      CREATE TABLE users (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        email TEXT,
+        password TEXT
+      )
+    ''');
+  }
+
+  Future<int> insertUser(Map<String, dynamic> user) async {
+    final db = await database;
+    return await db.insert('users', user);
+  }
+
+  Future<List<Map<String, dynamic>>> getUsers() async {
+    final db = await database;
+    return await db.query('users');
+  }
+
+  Future<int> updateUser(Map<String, dynamic> user) async {
+    final db = await database;
+    return await db.update(
+      'users',
+      user,
+      where: 'id = ?',
+      whereArgs: [user['id']],
+    );
   }
 }

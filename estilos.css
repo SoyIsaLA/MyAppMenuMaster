@@ -1,0 +1,69 @@
+body{
+    background-color: hsla(0, 0%, 36%, 0.829);
+    align-items: center;
+}
+
+h1{
+    color: white;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 60px;
+}
+
+p{
+    color: white;
+    font-size: 20px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.imagencentrada{
+    padding-left: 30%;
+    padding-right: 23%;
+    
+    
+}
+
+#borde{
+    border: outset black;
+    border-radius: 22px;
+    border-radius: 22px;
+    width:80%;
+    height: 450px;
+}
+
+.parrafo{
+    text-align: justify;
+    padding-left: 5%;
+    padding-right: 5%
+
+}
+
+#familiaimagen{
+    
+    border: outset black;
+    border-radius: 22px;
+    width:80%;
+    height: 450px;
+}
+
+.famili{
+    padding-left: 30%;
+    padding-right: 23%;
+    padding-bottom: 50px;
+
+}
+
+#video{
+border: solid black;
+    width: 640px;
+    height: 360px;
+    border-radius: 22px;   
+}
+
+.vid{
+
+    padding-left: 24%;
+    padding-right: 24%;
+    padding-bottom: 50px;
+    
+}
