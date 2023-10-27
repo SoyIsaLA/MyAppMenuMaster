@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
+// ignore: depend_on_referenced_packages
+import 'package:path/path.dart';
 import 'package:menumaster/pantallamesas.dart';
 
 class RegistroWidget extends StatefulWidget {
@@ -11,9 +14,13 @@ class RegistroWidget extends StatefulWidget {
 
 class _RegistroWidgetState extends State<RegistroWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
   bool passwordVisible = false;
+  final fullNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool started =
+      false; // Variable para controlar si se ha presionado el botón "Empezar".
 
   @override
   Widget build(BuildContext context) {
@@ -65,11 +72,10 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
-                      controller: emailController,
+                      controller: fullNameController,
                       decoration: const InputDecoration(
                         labelText: 'Nombre Completo',
                       ),
-                      keyboardType: TextInputType.emailAddress,
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
@@ -102,11 +108,37 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                     ),
                     const SizedBox(height: 16),
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        if (!started) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Bienvenido'),
+                                content: const Text('¡Gracias por empezar!'),
+                                actions: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('Aceptar'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+
+                          setState(() {
+                            started = true;
+                          });
+                        }
+
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PantallaMesasWidget()));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PantallaMesasWidget(),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size(150, 40),
@@ -134,5 +166,50 @@ class _RegistroWidgetState extends State<RegistroWidget> {
         ),
       ),
     );
+  }
+}
+
+class DatabaseHelper {
+  static final DatabaseHelper _instance = DatabaseHelper._internal();
+
+  factory DatabaseHelper() => _instance;
+
+  DatabaseHelper._internal();
+
+  static Database? _database;
+
+  Future<Database> get database async {
+    if (_database != null) {
+      return _database!;
+    }
+    _database = await _initDatabase();
+    return _database!;
+  }
+
+  Future<Database> _initDatabase() async {
+    final String path = join(await getDatabasesPath(), 'user_database.db');
+    return openDatabase(
+      path,
+      version: 1,
+      onCreate: (db, version) {
+        db.execute('''
+          CREATE TABLE User(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            fullName TEXT,
+            email TEXT,
+            password TEXT
+          )
+        ''');
+      },
+    );
+  }
+
+  Future<int> insertUser(String fullName, String email, String password) async {
+    final db = await database;
+    return await db.insert('User', {
+      'fullName': fullName,
+      'email': email,
+      'password': password,
+    });
   }
 }

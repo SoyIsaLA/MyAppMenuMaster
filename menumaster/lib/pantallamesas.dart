@@ -29,10 +29,10 @@ class PantallaMesasWidget extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => PrincipalRestauranteWidget()));
+                    builder: (context) => const PrincipalRestauranteWidget()));
           },
         ),
-        title: Text(
+        title: const Text(
           'Ordenar',
           style: TextStyle(
             fontSize: 24,
@@ -41,7 +41,7 @@ class PantallaMesasWidget extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.person,
               color: Color(0xFF101518),
               size: 35,
@@ -50,7 +50,7 @@ class PantallaMesasWidget extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => PerfilmeseroWidget()));
+                      builder: (context) => const PerfilmeseroWidget()));
             },
           ),
           const SizedBox(
@@ -63,8 +63,8 @@ class PantallaMesasWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 'Nuestras mesas están a continuación:',
                 style: TextStyle(
@@ -90,13 +90,13 @@ class PantallaMesasWidget extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 3,
                           blurRadius: 10,
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
                     child: Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 16,
                         ),
                         ClipRRect(
@@ -109,7 +109,7 @@ class PantallaMesasWidget extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 16,
                         ),
                         Expanded(
@@ -118,7 +118,7 @@ class PantallaMesasWidget extends StatelessWidget {
                             children: [
                               Text(
                                 'Mesa ${index + 1}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -127,11 +127,11 @@ class PantallaMesasWidget extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 16,
                         ),
                         IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_forward_rounded,
                             color: Color.fromARGB(211, 79, 152, 152),
                             size: 30,
@@ -140,10 +140,10 @@ class PantallaMesasWidget extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Mesa1Widget()));
+                                    builder: (context) => const Mesa1Widget()));
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 16,
                         ),
                       ],

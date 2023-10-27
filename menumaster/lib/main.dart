@@ -5,6 +5,7 @@ import 'package:menumaster/pantallamesas.dart';
 import 'package:menumaster/perfilmesero.dart';
 import 'package:menumaster/registro.dart';
 import 'package:sqflite/sqflite.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
 class PrincipalRestauranteWidget extends StatelessWidget {

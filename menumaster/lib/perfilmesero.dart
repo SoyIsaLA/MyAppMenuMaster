@@ -6,6 +6,7 @@ class PerfilmeseroWidget extends StatefulWidget {
   const PerfilmeseroWidget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PerfilmeseroWidgetState createState() => _PerfilmeseroWidgetState();
 }
 
@@ -44,16 +45,16 @@ class _PerfilmeseroWidgetState extends State<PerfilmeseroWidget> {
                 MaterialPageRoute(builder: (context) => PantallaMesasWidget()));
           },
         ),
-        title: Text(
+        title: const Text(
           'Perfil',
-          style: const TextStyle(
+          style: TextStyle(
             fontFamily: 'Readex Pro',
             color: Color.fromARGB(255, 255, 255, 255),
             fontSize: 23,
             fontWeight: FontWeight.bold, // Negrita
           ),
         ),
-        actions: [],
+        actions: const [],
         centerTitle: false,
         elevation: 0,
       ),
@@ -70,8 +71,8 @@ class _PerfilmeseroWidgetState extends State<PerfilmeseroWidget> {
                   Expanded(
                     child: Container(
                       width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: const Color(0xA3408787),
+                      decoration: const BoxDecoration(
+                        color: Color(0xA3408787),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
@@ -97,7 +98,7 @@ class _PerfilmeseroWidgetState extends State<PerfilmeseroWidget> {
                                   width: 120,
                                   height: 120,
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.asset(
@@ -114,14 +115,14 @@ class _PerfilmeseroWidgetState extends State<PerfilmeseroWidget> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(16, 24, 16, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
                       'Tu información',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontFamily: 'Outfit',
                         color: Color(0xFF14181B),
                         fontSize: 24,
@@ -161,29 +162,29 @@ class _PerfilmeseroWidgetState extends State<PerfilmeseroWidget> {
                                   fontWeight: FontWeight.normal,
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: const Color(0xFFE0E3E7),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFFE0E3E7),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: const Color(0xA3408787),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xA3408787),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: const Color(0xFFFF5963),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFFFF5963),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: const Color(0xFFFF5963),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFFFF5963),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
@@ -227,29 +228,29 @@ class _PerfilmeseroWidgetState extends State<PerfilmeseroWidget> {
                                   fontWeight: FontWeight.normal,
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: const Color(0xFFE0E3E7),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFFE0E3E7),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: const Color(0xA3408787),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xA3408787),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: const Color(0xFFFF5963),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFFFF5963),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: const Color(0xFFFF5963),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFFFF5963),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
@@ -279,21 +280,21 @@ class _PerfilmeseroWidgetState extends State<PerfilmeseroWidget> {
                           builder: (context) =>
                               const PrincipalRestauranteWidget()));
                 },
-                child: Text(
-                  'Cerrar Sesión',
-                  style: const TextStyle(
-                    fontFamily: 'Plus Jakarta Sans',
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xA3408787),
                   padding: EdgeInsets.zero,
                   fixedSize: const Size(150, 40),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: const Text(
+                  'Cerrar Sesión',
+                  style: TextStyle(
+                    fontFamily: 'Plus Jakarta Sans',
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),

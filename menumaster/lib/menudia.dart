@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:menumaster/pantallamesas.dart';
 
 class Mesa1Widget extends StatefulWidget {
   const Mesa1Widget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _Mesa1WidgetState createState() => _Mesa1WidgetState();
 }
 
@@ -21,9 +23,9 @@ class _Mesa1WidgetState extends State<Mesa1Widget> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('Menu del Dia'),
+          title: const Text('Menu del Dia'),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -34,32 +36,32 @@ class _Mesa1WidgetState extends State<Mesa1Widget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Divider(
+                const Divider(
                   thickness: 1,
                   color: Color(0xA3408787),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(16, 0, 16, 25),
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 25),
                   child: Column(
                     children: [
                       Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Color(0xFFF5FBFB),
+                          color: const Color(0xFFF5FBFB),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.fromLTRB(12, 5, 12, 80),
+                          padding: const EdgeInsets.fromLTRB(12, 5, 12, 80),
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 'Entrada',
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
                               CheckboxGroup(
-                                labels: [
+                                labels: const [
                                   'Sopa de pasta',
                                   'Crema de verdura',
                                   'Fruta'
@@ -73,14 +75,18 @@ class _Mesa1WidgetState extends State<Mesa1Widget> {
                                   setState(() {});
                                 },
                               ),
-                              Text(
+                              const Text(
                                 'Principios',
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
                               CheckboxGroup(
-                                labels: ['Frijol', 'Garbanzo', 'Calabacin'],
+                                labels: const [
+                                  'Frijol',
+                                  'Garbanzo',
+                                  'Calabacin'
+                                ],
                                 onChange: (bool isChecked, String label) {
                                   if (isChecked) {
                                     checkboxGroupValues2.add(label);
@@ -90,14 +96,14 @@ class _Mesa1WidgetState extends State<Mesa1Widget> {
                                   setState(() {});
                                 },
                               ),
-                              Text(
+                              const Text(
                                 'Proteinas',
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
                               CheckboxGroup(
-                                labels: [
+                                labels: const [
                                   'Res',
                                   'Cerdo',
                                   'Pollo Dorado',
@@ -114,14 +120,14 @@ class _Mesa1WidgetState extends State<Mesa1Widget> {
                                   setState(() {});
                                 },
                               ),
-                              Text(
+                              const Text(
                                 'Ensalada',
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
                               CheckboxGroup(
-                                labels: ['Dulce', 'Salada'],
+                                labels: const ['Dulce', 'Salada'],
                                 onChange: (bool isChecked, String label) {
                                   if (isChecked) {
                                     checkboxGroupValues4.add(label);
@@ -131,14 +137,14 @@ class _Mesa1WidgetState extends State<Mesa1Widget> {
                                   setState(() {});
                                 },
                               ),
-                              Text(
+                              const Text(
                                 'Papa',
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
                               CheckboxGroup(
-                                labels: ['Francesa', 'Sudada'],
+                                labels: const ['Francesa', 'Sudada'],
                                 onChange: (bool isChecked, String label) {
                                   if (isChecked) {
                                     checkboxGroupValues5.add(label);
@@ -158,13 +164,21 @@ class _Mesa1WidgetState extends State<Mesa1Widget> {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(16, 0, 16, 26),
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 26),
                     child: ElevatedButton(
                       onPressed: () {
-                        print('Button pressed ...');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PantallaMesasWidget()));
+                        // Agregar el mensaje
+                        const snackBar = SnackBar(
+                          content: Text('Pedido enviado a la cocina'),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0x8900A5A5),
+                        backgroundColor: const Color(0x8900A5A5),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -173,7 +187,7 @@ class _Mesa1WidgetState extends State<Mesa1Widget> {
                         width: 275,
                         height: 43,
                         alignment: Alignment.center,
-                        child: Text(
+                        child: const Text(
                           'Realizar Pedido',
                           style: TextStyle(
                             fontFamily: 'Inter',
@@ -199,9 +213,11 @@ class CheckboxGroup extends StatefulWidget {
   final List<String> labels;
   final Function(bool, String) onChange;
 
-  CheckboxGroup({required this.labels, required this.onChange});
+  const CheckboxGroup(
+      {super.key, required this.labels, required this.onChange});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CheckboxGroupState createState() => _CheckboxGroupState();
 }
 
@@ -236,7 +252,7 @@ class _CheckboxGroupState extends State<CheckboxGroup> {
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: Scaffold(
         body: Mesa1Widget(),
       ),

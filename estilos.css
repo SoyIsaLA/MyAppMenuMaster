@@ -1,5 +1,5 @@
 body{
-    background-color: hsla(0, 0%, 87%, 0.932);
+    background-color: #ffffff;
     align-items: center;
 }
 
@@ -10,6 +10,13 @@ h1{
     font-size: 60px;
 }
 
+h2{
+    color: rgb(14, 14, 14);
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 35px;
+}
+
 p{
     color: rgb(15, 15, 15);
     font-size: 20px;
@@ -17,7 +24,7 @@ p{
 }
 
 .imagencentrada{
-    padding-left: 30%;
+    padding-left: 31%;
     padding-right: 23%;
     
     
@@ -53,17 +60,28 @@ p{
 
 }
 
-#video{
-border: solid black;
-    width: 640px;
-    height: 360px;
-    border-radius: 22px;   
+.collage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0; /* Ajusta el espaciado entre el texto y el collage */
 }
 
-.vid{
-
-    padding-left: 24%;
-    padding-right: 24%;
-    padding-bottom: 50px;
-    
+.fila {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0; /* Ajusta el espaciado entre las filas */
 }
+
+.fila img {
+    width: 200px; /* Ajusta el tamaño de las imágenes de cada fila */
+    height: auto; /* Mantiene la proporción original */
+    margin: 10px; /* Ajusta el espaciado entre las imágenes en una fila */
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+
+
